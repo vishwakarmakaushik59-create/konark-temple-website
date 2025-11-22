@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Konark — Crafted Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{ --bg:#040404; --panel:#0f0f0f; --muted:#c7a17a; --text:#f3eee9; --accent:#ff7a00; --glass: rgba(255,255,255,0.03); --radius:16px; }
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background:var(--bg); color:var(--text);}
+.container{max-width:1200px; margin:0 auto; padding:0 18px;}
+
+/* Nav */
+header{position:fixed; left:0; right:0; top:18px; display:flex; justify-content:center; z-index:50; pointer-events:none}
+.nav{width:95%; max-width:1200px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:10px 18px; border-radius:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; pointer-events:auto; box-shadow:0 6px 30px rgba(0,0,0,0.6);}
+.logo{width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#c1a566); display:flex; align-items:center; justify-content:center; color:#0b0b0b; font-weight:700; font-family:'Playfair Display';}
+nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0; align-items:center}
+nav a{color:var(--text); text-decoration:none; font-weight:600}
+
+/* Hero */
+.hero{min-height:86vh; display:grid; place-items:center; position:relative; margin-top:72px; overflow:hidden;}
+.hero-bg{position:absolute; inset:-10% -10% -10% -10%; background-size:cover; background-position:center; filter:saturate(0.9) contrast(0.95) brightness(0.6); transform:scale(1.03); transition:transform .9s cubic-bezier(.2,.9,.2,1);}
+.hero-content{position:relative; z-index:2; text-align:center; padding:36px; border-radius:14px; max-width:1000px; color:var(--text);}
+.eyebrow{color:var(--muted); letter-spacing:1.2px; font-size:13px; text-transform:uppercase; margin-bottom:12px;}
+h1{font-family:'Playfair Display'; font-size:56px; margin:0 0 12px 0; letter-spacing:0.6px;}
+.lead{color:var(--muted); font-size:18px; margin:0 auto 22px; max-width:720px;}
+.btn{padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,0.06); background:transparent; cursor:pointer; font-weight:600;}
+.btn.primary{background: linear-gradient(90deg,var(--accent), #c1a566); color:#0b0b0b; box-shadow:0 10px 30px rgba(193,165,102,0.12);}
+
+/* Sections */
+section{padding:64px 0; position:relative;}
+h2.section-title{font-family:'Playfair Display'; font-size:28px; margin:0 0 18px 0;}
+
+/* Grid & cards */
+.grid{display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:22px;}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:var(--radius); min-height:260px; display:flex; flex-direction:column;}
+.card img{width:100%; height:220px; object-fit:cover; border-radius:10px; margin-bottom:14px;}
+.card h3{font-family:'Playfair Display'; margin:0 0 8px 0;}
+.meta{margin-top:auto; display:flex; justify-content:space-between; align-items:center;}
+
+/* Split layout */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;}
+.split img{width:100%; border-radius:12px;}
+
+/* Gallery masonry-like */
+.gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+.gallery img{width:100%; height:200px; object-fit:cover; border-radius:10px; transition:transform .25s; box-shadow:0 8px 30px rgba(0,0,0,0.45);}
+.gallery img:hover{transform:translateY(-6px) scale(1.02); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+
+/* Footer */
+footer{padding:36px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,0.03); margin-top:28px;}
+
+/* Fade util */
+.fade{opacity:0; transform:translateY(18px); transition:opacity .7s ease-out, transform .7s cubic-bezier(.2,.9,.2,1);}
+.fade.show{opacity:1; transform:translateY(0);}
+
+/* Responsive */
+@media (max-width:860px){ h1{font-size:36px} .split{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="nav container" role="navigation" aria-label="Main navigation">
+    <div style="display:flex;gap:12px;align-items:center;">
+      <div class="logo" aria-hidden="true">KS</div>
+      <div>
+        <div style="font-weight:600">Konark Studio</div>
+        <div style="font-size:12px;color:var(--muted)">Heritage • Craft • Stories</div>
+      </div>
+    </div>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collections">Gallery</a></li>
+        <li><a href="#making">Making Of</a></li>
+        <li><a href="#story">Story</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg" id="heroBg" style="background-image:url('/mnt/data/images/img1.png');"></div>
+    <div class="hero-content container fade">
+      <div class="eyebrow">Konark Sun Temple — Reimagined</div>
+      <h1>The Wheel of Time</h1>
+      <p class="lead">A premium showcase of Konark’s architectural mastery — captured, modeled and lovingly restored through craft.</p>
+      <div style="display:flex; gap:12px; justify-content:center; margin-top:16px;">
+        <button class="btn primary" onclick="location.href='#collections'">Explore Gallery</button>
+        <button class="btn" onclick="location.href='#making'">Making Of</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured / Symbolism -->
+  <section id="story" class="container fade">
+    <h2 class="section-title">Symbolism — Wheel of Time</h2>
+    <div class="split">
+      <div>
+        <img src="/mnt/data/images/img8.png" alt="Konark Wheel — detailed stone wheel">
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display'">Wheel — art, astronomy & memory</h3>
+        <p style="color:var(--muted)">The Sundial wheel of Konark is not only an icon — it is a sophisticated instrument, an emblem of time and an intricate canvas of carved stories. Below we show the comparison, the detailed wheel and the symbolism captured across sketches and close-ups.</p>
+        <p style="color:var(--muted)">This site preserves the visual narrative and shows how craft and documentation come together to honour the monument.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections / Gallery -->
+  <section id="collections" class="container fade">
+    <h2 class="section-title">Gallery — Visual Archive</h2>
+
+    <div class="grid" style="margin-bottom:20px;">
+      <article class="card">
+        <img src="/mnt/data/images/img4.png" alt="Temple wide shot">
+        <h3>Konark — Wide View</h3>
+        <p style="color:var(--muted)">A wide perspective showing scale and layout of the temple complex.</p>
+      </article>
+
+      <article class="card">
+        <img src="/mnt/data/images/img5.png" alt="Stone carving">
+        <h3>Craftsmanship</h3>
+        <p style="color:var(--muted)">Close-up details of the masterful carvings on wall panels.</p>
+      </article>
+
+      <article class="card">
+        <img src="/mnt/data/images/img3.png" alt="Wheel comparison">
+        <h3>Currency & Icon</h3>
+        <p style="color:var(--muted)">The Konark wheel as depicted on currency and as carved on the temple — an enduring symbol.</p>
+      </article>
+    </div>
+
+    <h3 style="font-family:'Playfair Display'; margin:26px 0 12px 0">Full gallery</h3>
+    <div class="gallery" aria-live="polite">
+      <img src="/mnt/data/images/img6.png" alt="Blueprint map">
+      <img src="/mnt/data/images/img7.png" alt="Hand-drawn concept sketch">
+      <img src="/mnt/data/images/img2.png" alt="Pencil architecture sketch">
+      <img src="/mnt/data/images/img8.png" alt="Wheel detailed">
+      <img src="/mnt/data/images/img5.png" alt="Carving close-up">
+      <img src="/mnt/data/images/img4.png" alt="Temple wide">
+    </div>
+  </section>
+
+  <!-- Making Of / BTS -->
+  <section id="making" class="container fade">
+    <h2 class="section-title">Behind The Making — Model Workshop</h2>
+    <p style="color:var(--muted)">A short documentary of the cardboard model — from measurement to assembly. These images show process, focus and craft.</p>
+
+    <div class="grid" style="margin-top:18px;">
+      <article class="card">
+        <img src="/mnt/data/images/img9.png" alt="BTS 1">
+        <h3>Design & Measurement</h3>
+        <p style="color:var(--muted)">Marking the panels and layout before cutting.</p>
+      </article>
+
+      <article class="card">
+        <img src="/mnt/data/images/img10.png" alt="BTS 2">
+        <h3>Glue & Assembly</h3>
+        <p style="color:var(--muted)">Building the stacked roofs with careful adhesive work.</p>
+      </article>
+
+      <article class="card">
+        <img src="/mnt/data/images/img11.png" alt="BTS 3">
+        <h3>Detailing</h3>
+        <p style="color:var(--muted)">Working on small carvings and proportions for scale.</p>
+      </article>
+
+      <article class="card">
+        <img src="/mnt/data/images/img12.png" alt="BTS 4">
+        <h3>Final Assembly</h3>
+        <p style="color:var(--muted)">Arranging the completed modules into the model layout.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Concept & Sketches -->
+  <section class="container fade">
+    <h2 class="section-title">Concept Art & Sketches</h2>
+    <div class="split">
+      <div><img src="/mnt/data/images/img7.png" alt="hand drawn sketch"></div>
+      <div>
+        <h3 style="font-family:'Playfair Display'">From Idea to Form</h3>
+        <p style="color:var(--muted)">Hand-drawn sketches capture the early vision — shapes, proportions and poetic notes that steered the model making.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex; gap:18px; align-items:center; justify-content:space-between;">
+    <div>
+      <strong style="color:var(--text)">Konark Studio</strong>
+      <div style="color:var(--muted); font-size:13px; margin-top:6px">Built with care • All images credited to the project team</div>
+    </div>
+    <div style="color:var(--muted); font-size:13px">© <span id="year"></span> Konark Studio</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+// small parallax effect for hero
+(function(){
+  const heroBg = document.getElementById('heroBg');
+  if(!heroBg) return;
+  window.addEventListener('mousemove', (e) => {
+    const x = (e.clientX - window.innerWidth/2) / (window.innerWidth/2);
+    const y = (e.clientY - window.innerHeight/2) / (window.innerHeight/2);
+    heroBg.style.transform = `translate(${x * 8}px, ${y * 6}px) scale(1.02)`;
+  });
+})();
+
+// fade-in intersection observer
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
